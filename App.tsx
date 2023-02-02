@@ -4,7 +4,6 @@ import { StatusBar } from 'expo-status-bar';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import useCachedResources from './src/hooks/useCachedResources';
-import useColorScheme from './src/hooks/useColorScheme';
 import Navigation from './src/navigation';
 import { LogBox, Platform } from "react-native";
 import { AppProvider } from './src/context/AppProvider';
@@ -22,7 +21,6 @@ const SCHEME_FROM_APP_JSON = 'marriagedao'
 
 export default function App() {
   const isLoadingComplete = useCachedResources();
-  const colorScheme = useColorScheme();
   let persistor = persistStore(store);
 
   return (
@@ -41,7 +39,7 @@ export default function App() {
                 storageOptions={{
                   asyncStorage: AsyncStorage,
                 }}>
-                <Navigation colorScheme={colorScheme} />
+                <Navigation colorScheme={'dark'} />
                 <StatusBar />
               </WalletConnectProvider>
             </SafeAreaProvider>

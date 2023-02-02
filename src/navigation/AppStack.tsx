@@ -1,6 +1,5 @@
 import React from 'react';
 import {createDrawerNavigator} from '@react-navigation/drawer';
-import CustomDrawer from '../components/CustomDrawer';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import HomeScreen from '../screens/HomeScreen';
 import { fonts } from '../theme';
@@ -10,7 +9,7 @@ const Drawer = createDrawerNavigator();
 const AuthStack = () => {
   return (
     <Drawer.Navigator
-      drawerContent={props => <CustomDrawer {...props} />}
+      drawerContent={props => <></>}
       screenOptions={{
         headerShown: false,
         drawerActiveBackgroundColor: '#ff69b4',
