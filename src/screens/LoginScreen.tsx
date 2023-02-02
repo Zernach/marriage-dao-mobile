@@ -21,8 +21,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setWallet } from '../context/store/wallet'
 // import FacebookSVG from '../assets/images/misc/facebook.svg';
 // import TwitterSVG from '../assets/images/misc/twitter.svg';
-import CustomButton from '../components/CustomButton';
-import InputField from '../components/InputField';
+import CustomButton from '../components/custom-button/custom-button';
+import InputField from '../components/input-field/input-field';
 import { AppContext } from '../context/AppProvider';
 import { fonts, responsiveHeight, responsiveWidth } from '../theme';
 
@@ -64,7 +64,7 @@ const LoginScreen = (props: { navigation: any }) => {
   return (
     <View style={{ flex: 1, justifyContent: 'center', backgroundColor: '#1c1c1c' }}>
       <Image
-        style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', resizeMode: 'cover' }}
+        style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '110%', resizeMode: 'cover' }}
         source={require('../assets/images/marriage-dao-love-blockchain.jpg')}
       />
       <View style={{ alignItems: 'center', position: 'absolute', top: responsiveHeight(12), alignSelf: 'center' }}>

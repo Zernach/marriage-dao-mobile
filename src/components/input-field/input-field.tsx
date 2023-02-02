@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, TextInput, StyleSheet } from 'react-native';
-import { fonts } from '../theme';
+import { fonts } from '../../theme';
 
 export default function InputField({
   label,

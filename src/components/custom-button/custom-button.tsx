@@ -1,6 +1,6 @@
 import { Text, TouchableOpacity } from 'react-native';
 import React from 'react';
-import { fonts } from '../theme';
+import { fonts } from '../../theme';
 
 export default function CustomButton({ label, onPress }) {
   return (

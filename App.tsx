@@ -1,4 +1,3 @@
-import './src/constants/global'
 import React from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
@@ -40,7 +39,8 @@ export default function App() {
                 }
                 storageOptions={{
                   asyncStorage: AsyncStorage,
-                }}>
+                }}
+              >
                 <Navigation colorScheme={colorScheme} />
                 <StatusBar />
               </WalletConnectProvider>
