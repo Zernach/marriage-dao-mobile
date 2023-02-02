@@ -35,16 +35,21 @@ export default function HomeScreen({ navigation }) {
     <>
       <SafeAreaView style={{ flex: 1, backgroundColor: '#1c1c1c' }}>
         <ScrollView style={{ padding: 20 }}>
+          <View>
+            <Text style={{ fontSize: 36, fontWeight: 'bold', color: 'white', textAlign: 'center', fontFamily: fonts.bold }}>
+              {'Marriage DAO 💍'}
+            </Text>
+            <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#FFFFFF99', textAlign: 'center', marginVertical: 5, fontFamily: fonts.bold }}>
+              {'Consumate Your Marriage on the Blockchain'}
+            </Text>
+          </View>
           <View
             style={{
               flexDirection: 'row',
               justifyContent: 'space-between',
               marginBottom: 20,
+              marginTop: responsiveHeight(5)
             }}>
-            <Text style={{ fontSize: 36, fontWeight: 'bold', color: 'white', textAlign: 'center', fontFamily: fonts.bold }}>{'Marriage DAO 💍'}</Text>
-            <br />
-            <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#FFFFFF99', textAlign: 'center', marginVertical: 5, fontFamily: fonts.bold }}>{'Consumate Your Marriage on the Blockchain'}</Text>
-            <br />
             <Text style={{ fontSize: 18, fontFamily: 'Roboto-Medium', color: 'white' }}>
               {`Hello ${wallet ? `${wallet?.slice(0, 6)}...${wallet.slice(wallet?.length - 4, wallet?.length)}` : 'No username'}`}
             </Text>
@@ -62,7 +67,7 @@ export default function HomeScreen({ navigation }) {
         </ScrollView>
       </SafeAreaView>
       {isLogoutModalOpen ?
-        <View style={{ position: 'absolute', top: responsiveHeight(10), right: responsiveHeight(10), backgroundColor: '#1c1c1c', borderRadius: responsiveWidth(5), borderColor: '#ff69b4', borderWidth: StyleSheet.hairlineWidth * 2, width: responsiveWidth(30) }}>
+        <View style={{ position: 'absolute', top: responsiveHeight(10), right: responsiveHeight(10), backgroundColor: '#1c1c1c', borderRadius: responsiveWidth(5), borderColor: '#ff69b4', borderWidth: StyleSheet.hairlineWidth * 2, width: responsiveWidth(44), padding: responsiveWidth(3) }}>
           <TouchableOpacity
             onPress={() => { return logout() }}
             style={{ paddingVertical: 15 }}>
