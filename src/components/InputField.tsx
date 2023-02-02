@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, TextInput, StyleSheet } from 'react-native';
+import { fonts } from '../theme';
 
 export default function InputField({
   label,
@@ -26,7 +27,7 @@ export default function InputField({
         <TextInput
           placeholder={label}
           keyboardType={keyboardType}
-          style={{ flex: 1, paddingVertical: 0 }}
+          style={{ flex: 1, paddingVertical: 0, color: 'white', fontFamily: fonts.medium }}
           secureTextEntry={true}
           value={value}
           onChangeText={onChangeText}
@@ -35,14 +36,14 @@ export default function InputField({
         <TextInput
           placeholder={label}
           keyboardType={keyboardType}
-          style={{ flex: 1, paddingVertical: 0 }}
+          style={{ flex: 1, paddingVertical: 0, color: 'white', fontFamily: fonts.medium }}
           value={value}
-          placeholderTextColor="#666666"
+          placeholderTextColor="#ffffff99"
           onChangeText={onChangeText}
         />
       )}
-      <TouchableOpacity onPress={fieldButtonFunction} style={{ borderColor: '#FF69B4', borderWidth: StyleSheet.hairlineWidth * 2, borderRadius: 100, paddingHorizontal: 10, paddingVertical: 4 }}>
-        <Text style={{ color: '#FF69B4', fontWeight: '700' }}>{fieldButtonLabel}</Text>
+      <TouchableOpacity onPress={fieldButtonFunction} style={{ borderColor: '#FF69B4', borderWidth: StyleSheet.hairlineWidth * 2, borderRadius: 100, paddingHorizontal: 10, paddingVertical: 4, backgroundColor: '#1c1c1c99' }}>
+        <Text style={{ color: '#FF69B4', fontFamily: fonts.bold }}>{fieldButtonLabel}</Text>
       </TouchableOpacity>
     </View>
   );
