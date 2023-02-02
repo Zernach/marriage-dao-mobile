@@ -38,7 +38,8 @@ export default function App() {
                 }
                 storageOptions={{
                   asyncStorage: AsyncStorage,
-                }}>
+                }}
+              >
                 <Navigation colorScheme={'dark'} />
                 <StatusBar />
               </WalletConnectProvider>
