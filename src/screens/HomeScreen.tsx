@@ -48,7 +48,7 @@ export default function HomeScreen({ navigation }) {
               flexDirection: 'row',
               justifyContent: 'space-between',
               marginBottom: 20,
-              marginTop: responsiveHeight(5)
+              marginTop: responsiveHeight(10)
             }}>
             <Text style={{ fontSize: 18, fontFamily: 'Roboto-Medium', color: 'white' }}>
               {`Hello ${wallet ? `${wallet?.slice(0, 6)}...${wallet.slice(wallet?.length - 4, wallet?.length)}` : 'No username'}`}
