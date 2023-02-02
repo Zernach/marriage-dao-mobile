@@ -70,6 +70,10 @@ const LoginScreen = (props: { navigation: any }) => {
     props.navigation.navigate('Webview', { link: 'https://www.daohouse.org/', title: 'DAO House' });
   }
 
+  const onPressMarriageDAO = () => {
+    props.navigation.navigate('Webview', { link: 'https://marriagedao.vip/', title: 'Marriage DAO' });
+  }
+
   return (
     <View style={{ flex: 1, justifyContent: 'center', backgroundColor: '#1c1c1c' }}>
       <Image
@@ -131,11 +135,23 @@ const LoginScreen = (props: { navigation: any }) => {
             style={{
               flexDirection: 'row',
               justifyContent: 'center',
-              marginBottom: 30,
+              marginBottom: 8,
             }}>
             <TouchableOpacity onPress={onPressMiamiHackWeek}>
               <Text style={{ color: '#ff69b4', fontFamily: fonts.bold }}>
                 {`Miami Hack Week 2023 🌴`}
+              </Text>
+            </TouchableOpacity>
+          </View>
+          <View
+            style={{
+              flexDirection: 'row',
+              justifyContent: 'center',
+              marginBottom: 30,
+            }}>
+            <TouchableOpacity onPress={onPressMarriageDAO}>
+              <Text style={{ color: '#ffffff99', fontFamily: fonts.bold }}>
+                {`https://marriagedao.vip/`}
               </Text>
             </TouchableOpacity>
           </View>

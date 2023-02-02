@@ -142,8 +142,8 @@ export const Presentation = ({
         containerStyle={{ paddingBottom: responsiveHeight(7) }}
         onLoadStart={() => setIsWebviewLoading?.(true)}
         onLoadEnd={() => setIsWebviewLoading?.(false)}
-        onError={() => PopupStore.setPopupContent({ title: 'Error', text: 'There was an error loading the website. Please try again later.' })}
-        onHttpError={() => PopupStore.setPopupContent({ title: 'Error', text: 'There was an error loading the website. Please try again later.' })}
+        onError={() => Alert.alert('There was an error loading the website. Please try again later.')}
+        onHttpError={() => Alert.alert('There was an error loading the website. Please try again later.')}
       />
     </Screen>
   )
