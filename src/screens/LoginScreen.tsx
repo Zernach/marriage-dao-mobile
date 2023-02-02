@@ -58,7 +58,7 @@ const LoginScreen = (props: { navigation: any }) => {
       dispatch(setWallet(address))
       setCurrentWalletAddress(address)
     } else {
-      Alert.alert('Invalid Wallet Address', `${address} wasn't long enough`)
+      Alert.alert('Invalid Wallet Address', `Please enter a longer wallet address.`)
     }
   }
 

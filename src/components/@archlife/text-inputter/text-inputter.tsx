@@ -1,5 +1,5 @@
 import * as React from "react"
-import { Text, View, TextInput, StyleSheet, TouchableOpacity, Image } from "react-native"
+import { Text, View, TextInput, StyleSheet, TouchableOpacity } from "react-native"
 import { fonts } from "../../../theme/@stem/fonts";
 import { responsiveFontSize, responsiveHeight, responsiveWidth } from '../../../theme/@archlife/constants';
 import { FadeInImage } from "../fade-in-image/fade-in-image";
@@ -51,7 +51,7 @@ export const TextInputter = (props: TextInputterProps) => {
         :
         null
       }
-      <View style={{ ...textInputterStyles.inputterContainer, borderColor: UserStore.currentUser.profile_primary_color, height: containerHeight, minHeight: minContainerHeight, ...containerStyle }}>
+      <View style={{ ...textInputterStyles.inputterContainer, borderColor: '#FF69B4', height: containerHeight, minHeight: minContainerHeight, ...containerStyle }}>
         <TextInput
           inputAccessoryViewID={"1"}
           value={value}
@@ -68,14 +68,14 @@ export const TextInputter = (props: TextInputterProps) => {
           onEndEditing={onEndEditing}
           autoComplete={autoCompleteType}
           textContentType={textContentType}
-          selectionColor={UserStore.currentUser.profile_primary_color}
+          selectionColor={'#FF69B4'}
           keyboardType={keyboardType}
           style={{ ...textInputterStyles.inputter, fontFamily: value ? fonts.bold : fonts.semiBold, paddingBottom: paddingBottomTextInput, ...textInputStyle }}
         />
-        {onPressIcon &&
+        {onPressIcon && localFile &&
           <TouchableOpacity onPress={onPressIcon} hitSlop={{ left: 10, top: 5, bottom: 5, right: 10 }}>
             <FadeInImage
-              localFile={localFile || require('../../../assets/@archlife/images/eye.png')}
+              localFile={localFile}
               style={{ height: responsiveWidth(4.8), width: responsiveWidth(4.8) }}
               imageStyle={{ height: responsiveWidth(4.8), width: responsiveWidth(4.8) }}
             />
