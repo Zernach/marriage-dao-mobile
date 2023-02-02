@@ -7,6 +7,7 @@ import {
   ImageBackground,
   TouchableOpacity,
   StyleSheet,
+  Alert,
 } from 'react-native';
 import { RootState } from '../context/store';
 import { useDispatch, useSelector } from 'react-redux';
@@ -19,6 +20,7 @@ import { TabsView } from '../components/@archlife/tabs-view/tabs-view';
 import { TextInputter } from '../components/@archlife/text-inputter/text-inputter';
 import { Headliner } from '../components/headliner/headliner';
 import CustomButton from '../components/CustomButton';
+import WebView from "react-native-webview"
 
 export default function HomeScreen({ navigation }) {
   const wallet = useSelector((state: RootState) => {
@@ -285,6 +287,18 @@ export default function HomeScreen({ navigation }) {
                     text={`Congratulations! 💍\n\nYou've been married!`}
                     textStyle={{ fontSize: responsiveFontSize(22), textAlign: 'center', marginBottom: responsiveHeight(3) }}
                   />
+                  {/* <WebView
+                    source={{ uri: 'https://gateway.ipfscdn.io/ipfs/QmbqEq5EQLx1aPurZFreM246fsKeawfpKDT8uzguAHAikr/erc1155.html?contract=0x38ccD5B179Db21e8C896704cb019af3AF9Eeb89F&chainId=137&tokenId=0' }}
+                    allowsFullscreenVideo={false}
+                    videoFullscreen={false}
+                    style={{ height: responsiveHeight(100), width: responsiveWidth(100) }}
+                    mediaPlaybackRequiresUserAction={true}
+                    contentMode={"mobile"}
+                    pullToRefreshEnabled={true}
+                    containerStyle={{ paddingBottom: responsiveHeight(7) }}
+                    onError={() => Alert.alert('There was an error loading the website. Please try again later.')}
+                    onHttpError={() => Alert.alert('There was an error loading the website. Please try again later.')}
+                  /> */}
                   <CustomButton
                     label={"View Contract"}
                     onPress={onPressViewCompletedContract}
