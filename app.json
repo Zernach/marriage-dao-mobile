@@ -2,7 +2,7 @@
   "expo": {
     "name": "Marriage DAO",
     "slug": "marriagedao",
-    "version": "1.0.11",
+    "version": "1.0.12",
     "orientation": "portrait",
     "scheme": "marriagedao",
     "userInterfaceStyle": "dark",
