@@ -3,14 +3,12 @@ import { NavigationContainer, DefaultTheme, DarkTheme } from '@react-navigation/
 import React, { useContext, useEffect } from 'react';
 import { View } from '../components/Themed';
 import LinkingConfiguration from './LinkingConfiguration';
-
 import { ColorSchemeName, StyleSheet, ActivityIndicator } from 'react-native';
 import { AppContext } from '../context/AppProvider';
 import AuthStack from './AuthStack';
 import AppStack from './AppStack'
 import { RootState } from '../context/store';
 import { useSelector } from 'react-redux';
-
 
 export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeName }) {
   const { currentWalletAddress, setCurrentWalletAddress } = useContext(AppContext);
