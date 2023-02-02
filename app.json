@@ -2,7 +2,7 @@
   "expo": {
     "name": "Marriage DAO",
     "slug": "marriagedao",
-    "version": "1.0.0",
+    "version": "1.0.11",
     "orientation": "portrait",
     "scheme": "marriagedao",
     "userInterfaceStyle": "dark",
@@ -29,7 +29,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./src/assets/images/adaptive-icon.png",
         "backgroundColor": "#1c1c1c"
-      }
+      },
+      "package": "com.zernach.marriagedao"
     },
     "web": {
       "favicon": "./src/assets/images/favicon.png"
