@@ -1,11 +1,5 @@
-# rn-context-reducer-memo-demo
+# Miami Hack Week 2023 🌴
+## PROJECT NAME: Marriage DAO
+### SUBMITTED BY: DAO House
 
-[![CodeQL](https://github.com/jongan69/rn-context-reducer-memo-demo/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/jongan69/rn-context-reducer-memo-demo/actions/workflows/codeql-analysis.yml)
-
-This app demos usage of certain React Native Hooks and Dynamic Touch Opacity in Modified Themed.tsx
-
-Features in AppContext.tsx:
-
-- useContext
-- redux-toolkit
-- redux-persist
+This repository contains the iOS/Android React Native code for Marriage DAO. It is a mobile app that allows users to create a marriage contract and store it on the blockchain. The app also allows users to view their marriage contract and to view the marriage contracts of other users. The app also allows users to create a marriage contract with another user and to view their marriage contract with another user.
