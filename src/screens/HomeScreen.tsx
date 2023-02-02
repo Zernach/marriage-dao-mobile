@@ -209,7 +209,7 @@ export default function HomeScreen({ navigation }) {
                     textStyle={{ fontSize: responsiveFontSize(22) }}
                   />
                   {contractDetails?.vestingPeriods?.map((period: any, index: number) => (
-                    <View key={`index${index}`} style={{ flexDirection: 'row', alignItems: 'space-between', alignContent: 'space-between', justifyContent: 'space-between' }}>
+                    <View key={`index${index}`} style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
                       <TextInputter
                         placeholder={'Year'}
                         value={contractDetails?.vestingPeriods[index]?.year}
@@ -223,6 +223,15 @@ export default function HomeScreen({ navigation }) {
                           })
                         }}
                       />
+                      <TouchableOpacity
+                        onPress={() => setContractDetails({
+                          ...contractDetails,
+                          vestingPeriods: contractDetails?.vestingPeriods.filter((period: any, periodIndex: number) => periodIndex !== index)
+                        })}
+                        style={{ height: responsiveWidth(10), justifyContent: 'flex-end' }}
+                      >
+                        <Ionicons name="trash-outline" size={22} color={'#ffffff50'} style={{ top: StyleSheet.hairlineWidth * 10 }} />
+                      </TouchableOpacity>
                       <TextInputter
                         placeholder={'Percentage'}
                         value={contractDetails?.vestingPeriods[index]?.percentage}
