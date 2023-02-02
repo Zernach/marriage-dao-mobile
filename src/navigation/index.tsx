@@ -1,9 +1,8 @@
 
 import { NavigationContainer, DefaultTheme, DarkTheme } from '@react-navigation/native';
 import React, { useContext, useEffect } from 'react';
-import { View } from '../components/Themed';
 import LinkingConfiguration from './LinkingConfiguration';
-import { ColorSchemeName, StyleSheet, ActivityIndicator } from 'react-native';
+import { ColorSchemeName, StyleSheet, ActivityIndicator, View } from 'react-native';
 import { AppContext } from '../context/AppProvider';
 import AuthStack from './AuthStack';
 import AppStack from './AppStack'
