@@ -14,7 +14,7 @@ import { AppContext } from '../context/AppProvider';
 import { Ionicons } from '@expo/vector-icons';
 import { useWalletConnect } from '@walletconnect/react-native-dapp';
 import { setWallet } from '../context/store/wallet';
-import { responsiveHeight, responsiveWidth } from '../theme';
+import { fonts, responsiveHeight, responsiveWidth } from '../theme';
 
 export default function HomeScreen({ navigation }) {
   const wallet = useSelector((state: RootState) => state.wallet.walletAddress);
@@ -41,6 +41,10 @@ export default function HomeScreen({ navigation }) {
               justifyContent: 'space-between',
               marginBottom: 20,
             }}>
+            <Text style={{ fontSize: 36, fontWeight: 'bold', color: 'white', textAlign: 'center', fontFamily: fonts.bold }}>{'Marriage DAO 💍'}</Text>
+            <br />
+            <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#FFFFFF99', textAlign: 'center', marginVertical: 5, fontFamily: fonts.bold }}>{'Consumate Your Marriage on the Blockchain'}</Text>
+            <br />
             <Text style={{ fontSize: 18, fontFamily: 'Roboto-Medium', color: 'white' }}>
               {`Hello ${wallet ? `${wallet?.slice(0, 6)}...${wallet.slice(wallet?.length - 4, wallet?.length)}` : 'No username'}`}
             </Text>
