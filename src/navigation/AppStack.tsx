@@ -1,8 +1,9 @@
 import React from 'react';
-import {createDrawerNavigator} from '@react-navigation/drawer';
+import { createDrawerNavigator } from '@react-navigation/drawer';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import HomeScreen from '../screens/HomeScreen';
 import { fonts } from '../theme';
+import { Webview } from '../screens/webview/webview';
 
 const Drawer = createDrawerNavigator();
 
@@ -24,11 +25,10 @@ const AuthStack = () => {
       <Drawer.Screen
         name="Home"
         component={HomeScreen}
-        options={{
-          drawerIcon: ({color}) => (
-            <Ionicons name="home-outline" size={22} color={color} />
-          ),
-        }}
+      />
+      <Drawer.Screen
+        name="Webview"
+        component={Webview}
       />
     </Drawer.Navigator>
   );

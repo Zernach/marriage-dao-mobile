@@ -62,6 +62,14 @@ const LoginScreen = (props: { navigation: any }) => {
     }
   }
 
+  const onPressMiamiHackWeek = () => {
+    props.navigation.navigate('Webview', { link: 'https://miamihackweek.com/', title: 'Miami Hack Week' });
+  }
+
+  const onPressDAOHouse = () => {
+    props.navigation.navigate('Webview', { link: 'https://www.daohouse.org/', title: 'DAO House' });
+  }
+
   return (
     <View style={{ flex: 1, justifyContent: 'center', backgroundColor: '#1c1c1c' }}>
       <Image
@@ -113,8 +121,10 @@ const LoginScreen = (props: { navigation: any }) => {
               justifyContent: 'center',
               marginBottom: 4,
             }}>
-            <TouchableOpacity onPress={() => { }}>
-              <Text style={{ color: '#ffffff99', fontFamily: fonts.bold }}> Brought to you by DAO House</Text>
+            <TouchableOpacity onPress={onPressDAOHouse}>
+              <Text style={{ color: '#ffffff99', fontFamily: fonts.bold }}>
+                {'Brought to you by DAO House'}
+              </Text>
             </TouchableOpacity>
           </View>
           <View
@@ -123,8 +133,10 @@ const LoginScreen = (props: { navigation: any }) => {
               justifyContent: 'center',
               marginBottom: 30,
             }}>
-            <TouchableOpacity onPress={() => { }}>
-              <Text style={{ color: '#ff69b4', fontFamily: fonts.bold }}> Miami Hack Week 2023 🌴</Text>
+            <TouchableOpacity onPress={onPressMiamiHackWeek}>
+              <Text style={{ color: '#ff69b4', fontFamily: fonts.bold }}>
+                {`Miami Hack Week 2023 🌴`}
+              </Text>
             </TouchableOpacity>
           </View>
         </View>
