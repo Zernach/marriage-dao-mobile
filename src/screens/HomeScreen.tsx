@@ -19,7 +19,6 @@ import { TabsView } from '../components/@archlife/tabs-view/tabs-view';
 import { TextInputter } from '../components/@archlife/text-inputter/text-inputter';
 import { Headliner } from '../components/headliner/headliner';
 import CustomButton from '../components/CustomButton';
-import { current } from '@reduxjs/toolkit';
 
 export default function HomeScreen({ navigation }) {
   const wallet = useSelector((state: RootState) => {
@@ -99,6 +98,10 @@ export default function HomeScreen({ navigation }) {
       vestingPeriods: [],
     })
   }
+  const onPressViewCompletedContract = () => {
+    onPressGetMarriedAgain()
+    setActiveTab('history')
+  }
 
   return (
     <>
@@ -163,9 +166,10 @@ export default function HomeScreen({ navigation }) {
                 ]}
               />
             </View>
-            : null}
+            : null
+          }
         </>
-        <ScrollView style={{ padding: responsiveWidth(5) }}>
+        <ScrollView style={{ padding: responsiveWidth(5) }} showsVerticalScrollIndicator={false}>
           {activeTab === 'create' ?
             <>
               {currentCreateIndex === 0 ?
@@ -283,7 +287,7 @@ export default function HomeScreen({ navigation }) {
                   />
                   <CustomButton
                     label={"View Contract"}
-                    onPress={() => setCurrentCreateIndex(2)}
+                    onPress={onPressViewCompletedContract}
                     style={{ backgroundColor: 'transparent', borderColor: '#ff69b4', borderWidth: StyleSheet.hairlineWidth * 2, }}
                   />
                   <CustomButton
