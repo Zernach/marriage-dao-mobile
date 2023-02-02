@@ -1,16 +1,18 @@
 {
   "expo": {
-    "name": "rn-auth-demo",
-    "slug": "rn-auth-demo",
+    "name": "Marriage DAO",
+    "slug": "marriagedao",
     "version": "1.0.0",
     "orientation": "portrait",
+    "scheme": "marriagedao",
+    "userInterfaceStyle": "dark",
     "icon": "./src/assets/images/icon.png",
-    "scheme": "demo",
-    "userInterfaceStyle": "automatic",
+    "backgroundColor": "#1c1c1c",
+    "jsEngine": "jsc",
     "splash": {
       "image": "./src/assets/images/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#1c1c1c"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
@@ -24,7 +26,7 @@
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./src/assets/images/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
+        "backgroundColor": "#1c1c1c"
       }
     },
     "web": {

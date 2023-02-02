@@ -14,7 +14,7 @@ import { store } from './src/context/store';
 import { PersistGate } from "redux-persist/integration/react";
 import { persistStore } from "redux-persist";
 LogBox.ignoreAllLogs();
-const SCHEME_FROM_APP_JSON = 'demo'
+const SCHEME_FROM_APP_JSON = 'marriagedao'
 
 // AppProvider: Provides a Global Wallet Address
 // Provider: Uses redux-toolkit with redux-persist for data that should be persisted from local async storage
