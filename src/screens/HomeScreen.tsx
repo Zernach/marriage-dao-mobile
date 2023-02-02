@@ -55,10 +55,19 @@ export default function HomeScreen({ navigation }) {
   const onPressAddAnotherYear = () => {
     setContractDetails({
       ...contractDetails,
+      numberOfYearsUntil5050: `${parseInt(contractDetails.numberOfYearsUntil5050) + 1}`,
       vestingPeriods: [...contractDetails.vestingPeriods, {
         year: contractDetails.vestingPeriods.length + 1,
         percentage: 0
       }]
+    })
+  }
+
+  const onPressTrashCan = (indexToDelete: number) => {
+    setContractDetails({
+      ...contractDetails,
+      numberOfYearsUntil5050: `${parseInt(contractDetails.numberOfYearsUntil5050) - 1}`,
+      vestingPeriods: contractDetails?.vestingPeriods.filter((period: any, periodIndex: number) => periodIndex !== indexToDelete)
     })
   }
 
@@ -81,6 +90,15 @@ export default function HomeScreen({ navigation }) {
     }
   }, [contractDetails.numberOfYearsUntil5050])
 
+  const onPressGetMarriedAgain = () => {
+    setCurrentCreateIndex(0)
+    setContractDetails({
+      spouseOneName: '',
+      spouseTwoName: '',
+      numberOfYearsUntil5050: '',
+      vestingPeriods: [],
+    })
+  }
 
   return (
     <>
@@ -111,7 +129,7 @@ export default function HomeScreen({ navigation }) {
           </TouchableOpacity>
         </View>
         <>
-          {currentCreateIndex > 0 ?
+          {currentCreateIndex > 0 && currentCreateIndex !== 2 ?
             <TouchableOpacity onPress={() => setCurrentCreateIndex(currentCreateIndex - 1)}>
               <Headliner
                 text={'← Back'}
@@ -179,11 +197,11 @@ export default function HomeScreen({ navigation }) {
                     }
                   />
                   <Headliner
-                    text={'Marriage Details'}
+                    text={'Agreement Duration'}
                     textStyle={{ fontSize: responsiveFontSize(22), marginTop: responsiveHeight(3) }}
                   />
                   <TextInputter
-                    placeholder={'Number of Years until 50/50 (e.g.: 5)'}
+                    placeholder={'Years until 50/50 (e.g.: 5, 10, etc.)'}
                     value={contractDetails?.numberOfYearsUntil5050}
                     onChangeText={(text: string) => setContractDetails({
                       ...contractDetails,
@@ -224,10 +242,7 @@ export default function HomeScreen({ navigation }) {
                         }}
                       />
                       <TouchableOpacity
-                        onPress={() => setContractDetails({
-                          ...contractDetails,
-                          vestingPeriods: contractDetails?.vestingPeriods.filter((period: any, periodIndex: number) => periodIndex !== index)
-                        })}
+                        onPress={() => onPressTrashCan(index)}
                         style={{ height: responsiveWidth(10), justifyContent: 'flex-end' }}
                       >
                         <Ionicons name="trash-outline" size={22} color={'#ffffff50'} style={{ top: StyleSheet.hairlineWidth * 10 }} />
@@ -261,12 +276,22 @@ export default function HomeScreen({ navigation }) {
                 : null
               }
               {currentCreateIndex === 2 ?
-                <>
+                <View style={{ paddingHorizontal: responsiveWidth(5) }}>
                   <Headliner
-                    text={'Congratulations! 💍'}
-                    textStyle={{ fontSize: responsiveFontSize(22), textAlign: 'center' }}
+                    text={`Congratulations! 💍\n\nYou've been married!`}
+                    textStyle={{ fontSize: responsiveFontSize(22), textAlign: 'center', marginBottom: responsiveHeight(3) }}
                   />
-                </>
+                  <CustomButton
+                    label={"View Contract"}
+                    onPress={() => setCurrentCreateIndex(2)}
+                    style={{ backgroundColor: 'transparent', borderColor: '#ff69b4', borderWidth: StyleSheet.hairlineWidth * 2, }}
+                  />
+                  <CustomButton
+                    label={"Get Married Again"}
+                    onPress={onPressGetMarriedAgain}
+                    style={{ backgroundColor: 'transparent', borderColor: '#ff69b4', borderWidth: StyleSheet.hairlineWidth * 2, }}
+                  />
+                </View>
                 : null
               }
             </>
