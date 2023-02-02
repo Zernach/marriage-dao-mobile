@@ -15,10 +15,9 @@ export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeNa
   const wallet = useSelector((state: RootState) => state.wallet.walletAddress);
 
   useEffect(() => {
-    if(wallet){
-      console.log('Wallet found in store, update user data from DB')
+    console.log('wallet', wallet)
+    if (wallet) {
       setCurrentWalletAddress(wallet)
-      console.log('Updated global wallet state from store to', currentWalletAddress)
     } else {
       console.log('No wallet to restore: ', currentWalletAddress)
     }
