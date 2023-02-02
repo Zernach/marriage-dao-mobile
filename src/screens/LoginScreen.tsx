@@ -25,6 +25,7 @@ import CustomButton from '../components/CustomButton';
 import InputField from '../components/InputField';
 import { AppContext } from '../context/AppProvider';
 import { fonts, responsiveHeight, responsiveWidth } from '../theme';
+import { LinearGradient } from 'expo-linear-gradient';
 
 
 const LoginScreen = (props: { navigation: any }) => {
@@ -76,7 +77,10 @@ const LoginScreen = (props: { navigation: any }) => {
         <Text style={{ fontSize: 36, fontWeight: 'bold', color: 'white', textAlign: 'center', fontFamily: fonts.bold }}>{'Marriage DAO 💍'}</Text>
         <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#FFFFFF99', textAlign: 'center', marginVertical: 5, fontFamily: fonts.bold }}>{'Consumate Your Marriage on the Blockchain'}</Text>
       </View>
-      <View style={{ paddingHorizontal: 25, backgroundColor: '#1c1c1c99', marginHorizontal: 25, borderRadius: responsiveWidth(5) }}>
+      <LinearGradient
+        colors={['#1c1c1c99', '#1c1c1c']}
+        style={{ paddingHorizontal: 25, marginHorizontal: 25, borderRadius: responsiveWidth(5) }}
+      >
         <View style={{}}>
           <Text
             style={{
@@ -124,7 +128,7 @@ const LoginScreen = (props: { navigation: any }) => {
             </TouchableOpacity>
           </View>
         </View>
-      </View>
+      </LinearGradient>
     </View>
   );
 };
