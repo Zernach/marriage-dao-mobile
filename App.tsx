@@ -1,3 +1,9 @@
+// Step 1: Import the crypto getRandomValues shim (**BEFORE** the ethers shims)
+import "react-native-get-random-values";
+// Step 2: Import the ethers shims (**BEFORE** the thirdweb SDK)
+import "@ethersproject/shims";
+// Step 3: Import the thirdweb SDK
+import { NFT, ThirdwebSDK } from "@thirdweb-dev/sdk";
 import './src/constants/global'
 import React from 'react';
 import { StatusBar } from 'expo-status-bar';

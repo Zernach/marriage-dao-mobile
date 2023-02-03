@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useCallback, useContext, useEffect, useState } from 'react';
 import {
   View,
   Text,
@@ -8,6 +8,7 @@ import {
   TouchableOpacity,
   StyleSheet,
   Alert,
+  Touchable,
 } from 'react-native';
 import { RootState } from '../context/store';
 import { useDispatch, useSelector } from 'react-redux';
@@ -20,14 +21,14 @@ import { TabsView } from '../components/@archlife/tabs-view/tabs-view';
 import { TextInputter } from '../components/@archlife/text-inputter/text-inputter';
 import { Headliner } from '../components/headliner/headliner';
 import CustomButton from '../components/CustomButton';
-import WebView from "react-native-webview"
+import { FadeInImage } from '../components/@archlife/fade-in-image/fade-in-image';
 
 export default function HomeScreen({ navigation }) {
   const wallet = useSelector((state: RootState) => {
     // console.log("Wallet —> ", state)
     return state.wallet.walletAddress
   });
-  const { setCurrentWalletAddress } = useContext(AppContext)
+  const { setCurrentWalletAddress, claimNFTtoCurrentWallet, currentNFTsInWallet } = useContext(AppContext)
   const connector = useWalletConnect();
   const dispatch = useDispatch();
   const [isLogoutModalOpen, setIsLogoutModalOpen] = useState(false)
@@ -103,6 +104,15 @@ export default function HomeScreen({ navigation }) {
   const onPressViewCompletedContract = () => {
     onPressGetMarriedAgain()
     setActiveTab('history')
+  }
+
+  const onPressGetMarried = useCallback(() => {
+    claimNFTtoCurrentWallet()
+    setCurrentCreateIndex(2)
+  }, [])
+
+  const onPressOwnedNFT = (clickedNFT: string) => {
+    navigation.navigate('Webview', { link: clickedNFT?.metadata?.external_url, title: clickedNFT?.metadata?.name })
   }
 
   return (
@@ -275,7 +285,7 @@ export default function HomeScreen({ navigation }) {
                   />
                   <CustomButton
                     label={"Get Married!"}
-                    onPress={() => setCurrentCreateIndex(2)}
+                    onPress={onPressGetMarried}
                     style={{ backgroundColor: !contractDetails?.spouseOneName && !contractDetails?.spouseTwoName && !contractDetails?.numberOfYearsUntil5050 ? '#ff69b499' : '#ff69b4' }}
                   />
                 </>
@@ -317,7 +327,24 @@ export default function HomeScreen({ navigation }) {
             null
           }
           {activeTab === 'history' ?
-            <></>
+            <>
+              {currentNFTsInWallet?.map((nft: any, index: number) => {
+                console.log('nft?.metadata?.image', nft)
+                return <TouchableOpacity
+                  onPress={() => onPressOwnedNFT(nft)}
+                  style={{ flexDirection: 'row', alignItems: 'center', borderColor: '#ff69b4', borderWidth: StyleSheet.hairlineWidth * 2, borderRadius: responsiveWidth(5), padding: responsiveWidth(2) }}
+                >
+                  <FadeInImage
+                    style={{ width: responsiveWidth(20), height: responsiveWidth(20), borderRadius: responsiveWidth(5), marginRight: responsiveWidth(2) }}
+                    imageUri={nft?.metadata?.image}
+                  />
+                  <View key={`index${index}`} style={{ justifyContent: 'space-between' }}>
+                    <Headliner text={`${nft?.metadata?.name}`} textStyle={{ fontSize: responsiveFontSize(24) }} style={{ width: responsiveWidth(70) }} />
+                    <Headliner text={`Description: ${nft?.metadata?.description}`} textStyle={{ fontSize: responsiveFontSize(12), marginTop: responsiveWidth(2) }} style={{ width: responsiveWidth(70) }} />
+                  </View>
+                </TouchableOpacity>
+              })}
+            </>
             :
             null
           }
