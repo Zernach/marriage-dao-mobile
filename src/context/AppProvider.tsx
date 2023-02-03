@@ -14,6 +14,7 @@ export const AppContext = createContext<{
 } | any>({});
 
 export const AppProvider = (props: { children: any }) => {
+
     const [currentWalletAddress, setCurrentWalletAddress] = useState<string>("")
     const [currentNFTsInWallet, setCurrentNFTsInWallet] = useState(null)
     const MARRIAGE_NFT_ID = "0x38ccD5B179Db21e8C896704cb019af3AF9Eeb89F"
@@ -36,20 +37,15 @@ export const AppProvider = (props: { children: any }) => {
             });
             getOwnedNFTs()
         }
-    }, [currentWalletAddress]);
-
-    console.log('currentWalletAddress', currentWalletAddress)
+    }, [currentWalletAddress, MARRIAGE_NFT_ID]);
 
     const claimNFTtoCurrentWallet = useCallback(async () => {
-        const sdk = new ThirdwebSDK("polygon");
-        const contract = await sdk.getContract(MARRIAGE_NFT_ID, "edition-drop");
-        const quantity = 1; // how many NFTs you want to claim
-        const tx = await contract.claimTo(currentWalletAddress, MARRIAGE_NFT_ID, quantity);
-        // const receipt = tx.receipt; // the transaction receipt
-        console.log('receipt', {
-            tx
-        })
-    }, [currentWalletAddress])
+        // const sdk = ThirdwebSDK.fromPrivateKey(SUPER_PRIVATE_KEY, "polygon");
+        // const contract = await sdk.getContract(MARRIAGE_NFT_ID, "edition-drop");
+        // const quantity = 1; // how many NFTs you want to claim
+        // const tx = await contract.claimTo(currentWalletAddress, MARRIAGE_NFT_ID, quantity);
+        // console.log('receipt', { tx })
+    }, [currentWalletAddress, MARRIAGE_NFT_ID])
 
     return (
         <AppContext.Provider value={{

@@ -7,8 +7,6 @@ import {
   ImageBackground,
   TouchableOpacity,
   StyleSheet,
-  Alert,
-  Touchable,
 } from 'react-native';
 import { RootState } from '../context/store';
 import { useDispatch, useSelector } from 'react-redux';
@@ -101,6 +99,7 @@ export default function HomeScreen({ navigation }) {
       vestingPeriods: [],
     })
   }
+
   const onPressViewCompletedContract = () => {
     onPressGetMarriedAgain()
     setActiveTab('history')
@@ -329,20 +328,25 @@ export default function HomeScreen({ navigation }) {
           {activeTab === 'history' ?
             <>
               {currentNFTsInWallet?.map((nft: any, index: number) => {
-                console.log('nft?.metadata?.image', nft)
-                return <TouchableOpacity
-                  onPress={() => onPressOwnedNFT(nft)}
-                  style={{ flexDirection: 'row', alignItems: 'center', borderColor: '#ff69b4', borderWidth: StyleSheet.hairlineWidth * 2, borderRadius: responsiveWidth(5), padding: responsiveWidth(2) }}
-                >
-                  <FadeInImage
-                    style={{ width: responsiveWidth(20), height: responsiveWidth(20), borderRadius: responsiveWidth(5), marginRight: responsiveWidth(2) }}
-                    imageUri={nft?.metadata?.image}
-                  />
-                  <View key={`index${index}`} style={{ justifyContent: 'space-between' }}>
-                    <Headliner text={`${nft?.metadata?.name}`} textStyle={{ fontSize: responsiveFontSize(24) }} style={{ width: responsiveWidth(70) }} />
-                    <Headliner text={`Description: ${nft?.metadata?.description}`} textStyle={{ fontSize: responsiveFontSize(12), marginTop: responsiveWidth(2) }} style={{ width: responsiveWidth(70) }} />
-                  </View>
-                </TouchableOpacity>
+                console.log('nft', nft)
+                return <View key={`${index}index`}>
+                  {[...Array(parseInt(nft?.quantityOwned)).keys()].map((i: number) => (
+                    <TouchableOpacity
+                      key={`index${index}${i}`}
+                      onPress={() => onPressOwnedNFT(nft)}
+                      style={{ flexDirection: 'row', alignItems: 'center', borderColor: '#ff69b4', borderWidth: StyleSheet.hairlineWidth * 2, borderRadius: responsiveWidth(5), padding: responsiveWidth(2), marginBottom: responsiveHeight(2) }}
+                    >
+                      <FadeInImage
+                        style={{ width: responsiveWidth(20), height: responsiveWidth(20), borderRadius: responsiveWidth(5), marginRight: responsiveWidth(2) }}
+                        imageUri={nft?.metadata?.image}
+                      />
+                      <View key={`index${index}`} style={{ justifyContent: 'space-between' }}>
+                        <Headliner text={`${nft?.metadata?.name}`} textStyle={{ fontSize: responsiveFontSize(24) }} style={{ width: responsiveWidth(70) }} />
+                        <Headliner text={`Description: ${nft?.metadata?.description}`} textStyle={{ fontSize: responsiveFontSize(12), marginTop: responsiveWidth(2) }} style={{ width: responsiveWidth(70) }} />
+                      </View>
+                    </TouchableOpacity>
+                  ))}
+                </View>
               })}
             </>
             :
