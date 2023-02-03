@@ -18,7 +18,7 @@ export const AppProvider = (props: { children: any }) => {
     const [currentWalletAddress, setCurrentWalletAddress] = useState<string>("")
     const [currentNFTsInWallet, setCurrentNFTsInWallet] = useState(null)
     const MARRIAGE_NFT_ID = "0x38ccD5B179Db21e8C896704cb019af3AF9Eeb89F"
-    const [nfts, setNFTS] = useState<NFT[]>([]);
+    const [allMarriageNFTs, setAllMarriageNFTs] = useState<NFT[]>([]);
 
     useEffect(() => {
         if (currentWalletAddress) {
@@ -33,7 +33,7 @@ export const AppProvider = (props: { children: any }) => {
                 setCurrentNFTsInWallet(nfts)
             }
             loadNFTS().then((_nfts) => {
-                setNFTS(_nfts);
+                setAllMarriageNFTs(_nfts);
             });
             getOwnedNFTs()
         }

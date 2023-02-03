@@ -27,7 +27,6 @@ import { AppContext } from '../context/AppProvider';
 import { fonts, responsiveHeight, responsiveWidth } from '../theme';
 import { LinearGradient } from 'expo-linear-gradient';
 
-
 const LoginScreen = (props: { navigation: any }) => {
   const { currentWalletAddress, setCurrentWalletAddress } = useContext(AppContext);
   const [address, setAddress] = useState<string>("");
