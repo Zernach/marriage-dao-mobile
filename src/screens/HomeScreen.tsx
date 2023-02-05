@@ -139,7 +139,7 @@ export default function HomeScreen({ navigation }) {
                   style={{ width: 35, height: 35 }}
                   imageStyle={{ borderRadius: 25 }}
                 />
-                <Text style={{ fontSize: responsiveFontSize(14), fontFamily: fonts.medium, color: 'white', left: responsiveWidth(3) }}>
+                <Text style={{ fontSize: responsiveFontSize(14), fontFamily: fonts.medium, color: '#ffffff99', left: responsiveWidth(3) }}>
                   {`0x38cc. . .b89F`}
                 </Text>
               </View>
@@ -147,7 +147,7 @@ export default function HomeScreen({ navigation }) {
             <TouchableOpacity onPress={() => setIsLogoutModalOpen(!isLogoutModalOpen)}>
               {wallet ?
                 <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                  <Text style={{ fontSize: responsiveFontSize(14), fontFamily: fonts.medium, color: 'white', right: responsiveWidth(3) }}>
+                  <Text style={{ fontSize: responsiveFontSize(14), fontFamily: fonts.medium, color: '#ffffff99', right: responsiveWidth(3) }}>
                     {`${wallet?.slice(0, 6)}. . .${wallet.slice(wallet?.length - 4, wallet?.length)}`}
                   </Text>
                   <ImageBackground

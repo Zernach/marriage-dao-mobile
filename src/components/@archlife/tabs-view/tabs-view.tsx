@@ -11,6 +11,7 @@ import { StyleSheet, Text, View } from 'react-native'
 import { TabsViewProps } from './tabs-view-interface'
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler'
 import { fonts, responsiveFontSize, responsiveHeight, responsiveWidth } from '../../../theme'
+import { LinearGradient } from 'expo-linear-gradient'
 
 /**
  * Describe the new component here...
@@ -19,7 +20,7 @@ export const TabsView = (props: TabsViewProps) => {
   const { routes, setActiveTab, activeTab } = props
 
   return (
-    <View style={{ ...styles.tabView, backgroundColor: '#FF69B499' }}>
+    <LinearGradient style={{ ...styles.tabView }} colors={['#ff69b499', '#ff69b470']}>
       {routes?.map((tab, index) => {
         const isCurrentlyActiveTab = activeTab === tab?.key
         return (
@@ -40,7 +41,7 @@ export const TabsView = (props: TabsViewProps) => {
                 ...styles.tabBarLabel,
                 color: isCurrentlyActiveTab
                   ? '#ffffff'
-                  : '#ffffff99',
+                  : '#ffffff80',
               }}
             >
               {tab?.title?.toUpperCase()}
@@ -48,7 +49,7 @@ export const TabsView = (props: TabsViewProps) => {
           </TouchableWithoutFeedback>
         )
       })}
-    </View>
+    </LinearGradient>
   )
 }
 
@@ -62,7 +63,7 @@ const styles = StyleSheet.create({
   },
   tabBarLabel: {
     textAlign: 'center',
-    fontSize: responsiveFontSize(16),
+    fontSize: responsiveFontSize(17),
     fontFamily: fonts.bold,
     position: 'absolute',
   },

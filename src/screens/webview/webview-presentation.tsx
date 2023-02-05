@@ -46,13 +46,13 @@ export const Presentation = ({
         <>
           <View style={{
             position: 'absolute',
-            right: responsiveWidth(8),
+            right: responsiveWidth(1),
             top: responsiveWidth(-6),
             flexDirection: 'row',
             alignItems: 'center',
           }}>
             <TouchableOpacity
-              hitSlop={hitSlop}
+              hitSlop={{...hitSlop, right: responsiveWidth(5)}}
               onPress={onPressShareWebsite}
               style={{ marginRight: responsiveWidth(5) }}
             >
@@ -60,7 +60,6 @@ export const Presentation = ({
                 name="share-social-outline"
                 size={20}
                 color="#ffffff99"
-                style={{ marginRight: 5 }}
               />
             </TouchableOpacity>
           </View>
