@@ -3,7 +3,6 @@ import "react-native-get-random-values";
 // Step 2: Import the ethers shims (**BEFORE** the thirdweb SDK)
 import "@ethersproject/shims";
 // Step 3: Import the thirdweb SDK
-import { NFT, ThirdwebSDK } from "@thirdweb-dev/sdk";
 import './src/constants/global'
 import React from 'react';
 import { StatusBar } from 'expo-status-bar';
@@ -19,7 +18,6 @@ import { store } from './src/context/store';
 import { PersistGate } from "redux-persist/integration/react";
 import { persistStore } from "redux-persist";
 LogBox.ignoreAllLogs();
-const SCHEME_FROM_APP_JSON = 'marriagedao'
 
 // AppProvider: Provides a Global Wallet Address
 // Provider: Uses redux-toolkit with redux-persist for data that should be persisted from local async storage
@@ -28,29 +26,24 @@ const SCHEME_FROM_APP_JSON = 'marriagedao'
 export default function App() {
   const isLoadingComplete = useCachedResources();
   let persistor = persistStore(store);
+  const walletConnectRedirectUrl = Platform.OS === "web" ? window.location.origin : `marriagedao://`
 
   return (
     <AppProvider>
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
-          {isLoadingComplete
-            &&
-            <SafeAreaProvider>
-              <WalletConnectProvider
-                redirectUrl={
-                  Platform.OS === "web"
-                    ? window.location.origin
-                    : `${SCHEME_FROM_APP_JSON}://`
-                }
-                storageOptions={{
-                  asyncStorage: AsyncStorage,
-                }}
-              >
+          <WalletConnectProvider
+            redirectUrl={walletConnectRedirectUrl}
+            storageOptions={{ asyncStorage: AsyncStorage }}
+          >
+            {isLoadingComplete
+              &&
+              <SafeAreaProvider>
                 <Navigation colorScheme={'dark'} />
                 <StatusBar />
-              </WalletConnectProvider>
-            </SafeAreaProvider>
-          }
+              </SafeAreaProvider>
+            }
+          </WalletConnectProvider>
         </PersistGate>
       </Provider>
     </AppProvider>

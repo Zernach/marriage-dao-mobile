@@ -16,8 +16,7 @@ import LoginSVG from '../assets/images/misc/login.svg';
 import AppleSVG from '../assets/images/misc/apple.svg';
 import GoogleSVG from '../assets/images/misc/google.svg';
 import CoinbaseSVG from '../assets/images/misc/coinbase.svg';
-import { useWalletConnect } from "@walletconnect/react-native-dapp";
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { setWallet } from '../context/store/wallet'
 // import FacebookSVG from '../assets/images/misc/facebook.svg';
 // import TwitterSVG from '../assets/images/misc/twitter.svg';
@@ -28,9 +27,8 @@ import { fonts, responsiveHeight, responsiveWidth } from '../theme';
 import { LinearGradient } from 'expo-linear-gradient';
 
 const LoginScreen = (props: { navigation: any }) => {
-  const { currentWalletAddress, setCurrentWalletAddress } = useContext(AppContext);
+  const { currentWalletAddress, setCurrentWalletAddress, connector } = useContext(AppContext);
   const [address, setAddress] = useState<string>("");
-  const connector = useWalletConnect();
   const dispatch = useDispatch();
 
   const connectWallet = React.useCallback(() => {

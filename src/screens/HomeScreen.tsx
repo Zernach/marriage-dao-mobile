@@ -7,12 +7,12 @@ import {
   ImageBackground,
   TouchableOpacity,
   StyleSheet,
+  Image,
 } from 'react-native';
 import { RootState } from '../context/store';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppContext } from '../context/AppProvider';
 import { Ionicons } from '@expo/vector-icons';
-import { useWalletConnect } from '@walletconnect/react-native-dapp';
 import { setWallet } from '../context/store/wallet';
 import { fonts, nullProfileImageLink, responsiveFontSize, responsiveHeight, responsiveWidth } from '../theme';
 import { TabsView } from '../components/@archlife/tabs-view/tabs-view';
@@ -28,8 +28,7 @@ export default function HomeScreen({ navigation }) {
     // console.log("Wallet —> ", state)
     return state.wallet.walletAddress
   });
-  const { setCurrentWalletAddress, claimNFTtoCurrentWallet, currentNFTsInWallet } = useContext(AppContext)
-  const connector = useWalletConnect();
+  const { setCurrentWalletAddress, claimNFTtoCurrentWallet, currentNFTsInWallet, connector } = useContext(AppContext)
   const dispatch = useDispatch();
   const [isLogoutModalOpen, setIsLogoutModalOpen] = useState(false)
   const [activeTab, setActiveTab] = useState('create')
@@ -116,6 +115,10 @@ export default function HomeScreen({ navigation }) {
     navigation.navigate('Webview', { link: clickedNFT?.metadata?.external_url, title: clickedNFT?.metadata?.name })
   }
 
+  const onPressThirdWebMarriageNFTCollectionBadge = () => {
+    navigation.navigate('Webview', { link: 'https://thirdweb.com/polygon/0x38ccD5B179Db21e8C896704cb019af3AF9Eeb89F?utm_source=contract_badge', title: 'Marriage NFT Collection' })
+  }
+
   return (
     <>
       <LinearGradient style={{ flex: 1 }} colors={[ShadeColor('#1c1c1c', 20), ShadeColor('#1c1c1c', -40)]}>
@@ -123,17 +126,24 @@ export default function HomeScreen({ navigation }) {
           <View
             style={{
               flexDirection: 'row',
-              justifyContent: 'flex-end',
+              justifyContent: 'space-between',
               marginBottom: 20,
-              right: responsiveWidth(5),
+              marginHorizontal: responsiveWidth(5),
               marginTop: responsiveHeight(1)
             }}
           >
+            <TouchableOpacity onPress={onPressThirdWebMarriageNFTCollectionBadge} style={{ flex: 1, flexDirection: 'row' }}>
+              <FadeInImage
+                localFile={require('../assets/images/marriage-nft-collection-id-thirdweb.png')}
+                // style={{ width: 200, height: 45 }}
+                imageStyle={{ width: 200 * 0.8, height: 45 * 0.8 }}
+              />
+            </TouchableOpacity>
             <TouchableOpacity onPress={() => setIsLogoutModalOpen(!isLogoutModalOpen)}>
               {wallet ?
                 <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                  <Text style={{ fontSize: 18, fontFamily: fonts.italic, color: 'white', right: responsiveWidth(3) }}>
-                    {`${wallet?.slice(0, 6)}...${wallet.slice(wallet?.length - 4, wallet?.length)}`}
+                  <Text style={{ fontSize: responsiveFontSize(14), fontFamily: fonts.medium, color: 'white', right: responsiveWidth(3) }}>
+                    {`${wallet?.slice(0, 6)}. . .${wallet.slice(wallet?.length - 4, wallet?.length)}`}
                   </Text>
                   <ImageBackground
                     source={{ uri: nullProfileImageLink }}
@@ -162,7 +172,8 @@ export default function HomeScreen({ navigation }) {
                   textStyle={{ textAlign: 'center' }}
                 />
                 <Headliner
-                  text={'Consumate Your Marriage on the Blockchain'}
+                  text={'Make Your Marriage Official on the Blockchain'}
+                  // text={'Consumate Your Marriage Official on the Blockchain'}
                   textStyle={{ textAlign: 'center', fontSize: responsiveFontSize(14), color: '#ffffff99', marginBottom: responsiveWidth(3) }}
                 />
                 <TabsView
@@ -331,7 +342,6 @@ export default function HomeScreen({ navigation }) {
             {activeTab === 'history' ?
               <>
                 {currentNFTsInWallet?.map((nft: any, index: number) => {
-                  console.log('nft', nft)
                   return <View key={`${index}index`}>
                     {[...Array(parseInt(nft?.quantityOwned)).keys()].map((i: number) => (
                       <TouchableOpacity
@@ -360,16 +370,16 @@ export default function HomeScreen({ navigation }) {
       </LinearGradient>
       {/* START — USER LOGOUT POPUP */}
       {isLogoutModalOpen ?
-        <View style={{ position: 'absolute', top: responsiveHeight(13), right: responsiveHeight(2), backgroundColor: '#1c1c1c', borderRadius: responsiveWidth(5), borderColor: '#ff69b4', borderWidth: StyleSheet.hairlineWidth * 2, width: responsiveWidth(44), padding: responsiveWidth(3) }}>
+        <View style={{ position: 'absolute', top: responsiveHeight(13), right: responsiveHeight(2), backgroundColor: '#1c1c1c', borderRadius: responsiveWidth(5), borderColor: '#ff69b4', borderWidth: StyleSheet.hairlineWidth * 2, width: responsiveWidth(44), paddingHorizontal: responsiveWidth(5), paddingVertical: responsiveWidth(2) }}>
           <TouchableOpacity
             onPress={() => { return logout() }}
             style={{ paddingVertical: 15 }}>
             <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-              <Ionicons name="exit-outline" size={22} color={'white'} />
+              <Ionicons name="exit-outline" size={22} color={'#ffffff99'} />
               <Text
                 style={{
                   fontSize: 15,
-                  fontFamily: 'Roboto-Medium',
+                  fontFamily: fonts.medium,
                   marginLeft: 5,
                   color: 'white'
                 }}>
@@ -381,11 +391,11 @@ export default function HomeScreen({ navigation }) {
             onPress={() => setIsLogoutModalOpen(false)}
             style={{ paddingVertical: 15 }}>
             <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-              <Ionicons name="return-down-back" size={22} color={'white'} />
+              <Ionicons name="return-down-back" size={22} color={'#ffffff99'} />
               <Text
                 style={{
                   fontSize: 15,
-                  fontFamily: 'Roboto-Medium',
+                  fontFamily: fonts.medium,
                   marginLeft: 5,
                   color: 'white'
                 }}>
