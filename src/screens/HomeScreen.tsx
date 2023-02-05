@@ -133,11 +133,16 @@ export default function HomeScreen({ navigation }) {
             }}
           >
             <TouchableOpacity onPress={onPressThirdWebMarriageNFTCollectionBadge} style={{ flex: 1, flexDirection: 'row' }}>
-              <FadeInImage
-                localFile={require('../assets/images/marriage-nft-collection-id-thirdweb.png')}
-                // style={{ width: 200, height: 45 }}
-                imageStyle={{ width: 200 * 0.8, height: 45 * 0.8 }}
-              />
+              <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                <ImageBackground
+                  source={{ uri: 'https://cdn.hashnode.com/res/hashnode/image/upload/v1649094600998/OTyYSo19z.png' }}
+                  style={{ width: 35, height: 35 }}
+                  imageStyle={{ borderRadius: 25 }}
+                />
+                <Text style={{ fontSize: responsiveFontSize(14), fontFamily: fonts.medium, color: 'white', left: responsiveWidth(3) }}>
+                  {`0x38cc. . .b89F`}
+                </Text>
+              </View>
             </TouchableOpacity>
             <TouchableOpacity onPress={() => setIsLogoutModalOpen(!isLogoutModalOpen)}>
               {wallet ?
