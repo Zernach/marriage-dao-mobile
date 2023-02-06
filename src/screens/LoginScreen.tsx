@@ -9,6 +9,7 @@ import {
   ImageBackground,
   Dimensions,
   Image,
+  StyleSheet,
 } from 'react-native';
 // import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -116,41 +117,34 @@ const LoginScreen = (props: { navigation: any }) => {
             keyboardType={undefined}
           />
           <CustomButton label={"Login"} onPress={() => { Login() }} />
-          <View
-            style={{
-              flexDirection: 'row',
-              justifyContent: 'center',
-              marginBottom: 4,
-            }}>
-            <TouchableOpacity onPress={onPressDAOHouse}>
-              <Text style={{ color: '#ffffff99', fontFamily: fonts.bold }}>
-                {'Brought to you by DAO House'}
-              </Text>
-            </TouchableOpacity>
-          </View>
-          <View
-            style={{
-              flexDirection: 'row',
-              justifyContent: 'center',
-              marginBottom: 8,
-            }}>
-            <TouchableOpacity onPress={onPressMiamiHackWeek}>
-              <Text style={{ color: '#ff69b4', fontFamily: fonts.bold }}>
-                {`Miami Hack Week 2023 🌴`}
-              </Text>
-            </TouchableOpacity>
-          </View>
-          <View
-            style={{
-              flexDirection: 'row',
-              justifyContent: 'center',
-              marginBottom: 30,
-            }}>
-            <TouchableOpacity onPress={onPressMarriageDAO}>
-              <Text style={{ color: '#ffffff99', fontFamily: fonts.bold }}>
-                {`https://marriagedao.vip/`}
-              </Text>
-            </TouchableOpacity>
+          <View style={{ marginBottom: responsiveHeight(3) }}>
+            {[
+              {
+                label: "Miami Hack Week 2023 🌴",
+                onPress: onPressMiamiHackWeek,
+              },
+              {
+                label: "Built by DAO House 🏡",
+                onPress: onPressDAOHouse,
+              },
+              {
+                label: "Visit Our Website 💻",
+                onPress: onPressMarriageDAO,
+              },
+            ].map((item, index) => (
+              <View
+                style={{
+                  flexDirection: 'row',
+                  justifyContent: 'center',
+                  marginBottom: StyleSheet.hairlineWidth * 12,
+                }}>
+                <TouchableOpacity onPress={item?.onPress}>
+                  <Text style={{ color: '#ffffff99', fontFamily: fonts.bold }}>
+                    {item?.label}
+                  </Text>
+                </TouchableOpacity>
+              </View>
+            ))}
           </View>
         </View>
       </LinearGradient>

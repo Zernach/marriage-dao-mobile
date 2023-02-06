@@ -31,11 +31,13 @@ export default function InputField({
           secureTextEntry={true}
           value={value}
           onChangeText={onChangeText}
+          selectionColor={'#FF69B4'}
         />
       ) : (
         <TextInput
           placeholder={label}
           keyboardType={keyboardType}
+          selectionColor={'#FF69B4'}
           style={{ flex: 1, paddingVertical: 0, color: 'white', fontFamily: fonts.medium }}
           value={value}
           placeholderTextColor="#ffffff99"
