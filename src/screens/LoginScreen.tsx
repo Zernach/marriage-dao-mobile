@@ -26,11 +26,13 @@ import InputField from '../components/InputField';
 import { AppContext } from '../context/AppProvider';
 import { fonts, responsiveHeight, responsiveWidth } from '../theme';
 import { LinearGradient } from 'expo-linear-gradient';
+import { useWalletConnect } from '@walletconnect/react-native-dapp';
 
 const LoginScreen = (props: { navigation: any }) => {
-  const { currentWalletAddress, setCurrentWalletAddress, connector } = useContext(AppContext);
+  const { currentWalletAddress, setCurrentWalletAddress } = useContext(AppContext);
   const [address, setAddress] = useState<string>("");
   const dispatch = useDispatch();
+  const connector = useWalletConnect();
 
   const connectWallet = React.useCallback(() => {
     return connector.connect();
@@ -84,8 +86,12 @@ const LoginScreen = (props: { navigation: any }) => {
             width={300}
             style={{ transform: [{ rotate: '-5deg' }] }}
           /> */}
-        <Text style={{ fontSize: 36, fontWeight: 'bold', color: 'white', textAlign: 'center', fontFamily: fonts.bold }}>{'Marriage DAO 💍'}</Text>
-        <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#FFFFFF99', textAlign: 'center', marginVertical: 5, fontFamily: fonts.bold }}>{'Consumate Your Marriage on the Blockchain'}</Text>
+        <Text style={{ fontSize: 36, fontWeight: 'bold', color: 'white', textAlign: 'center', fontFamily: fonts.bold }}>
+          {'Marriage DAO 💍'}
+        </Text>
+        <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#FFFFFF99', textAlign: 'center', marginVertical: 5, fontFamily: fonts.bold }}>
+          {'Consumate Your Marriage on the Blockchain'}
+        </Text>
       </View>
       <LinearGradient
         colors={['#1c1c1c99', '#1c1c1c']}
@@ -133,6 +139,7 @@ const LoginScreen = (props: { navigation: any }) => {
               },
             ].map((item, index) => (
               <View
+                key={`index${index}`}
                 style={{
                   flexDirection: 'row',
                   justifyContent: 'center',
