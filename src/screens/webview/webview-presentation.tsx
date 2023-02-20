@@ -5,7 +5,7 @@
 * All functions and values should be passed to this screen via props so they can be mocked for testing.
 */
 import * as React from "react"
-import { ActivityIndicator, Platform, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native"
+import { ActivityIndicator, Alert, Platform, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native"
 import WebView from "react-native-webview"
 import { fonts } from "../../theme/@stem/fonts"
 import { hitSlop, responsiveFontSize, responsiveHeight, responsiveWidth } from "../../theme/@archlife/constants"
