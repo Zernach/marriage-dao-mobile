@@ -51,22 +51,31 @@ export const AppProvider = (props: { children: any }) => {
     const claimNFTtoCurrentWallet = useCallback(async () => {
         const privateSDK = ThirdwebSDK.fromPrivateKey(SUPER_PRIVATE_KEY, "polygon");
         const marriageNFTCollection = await privateSDK.getContract(MARRIAGE_NFT_COLLECTION_ID, 'edition-drop');
-        marriageNFTCollection.erc1155.mintAdditionalSupplyTo(
-            currentWalletAddress, // which wallet to send the newly minted NFT(s)
+        // marriageNFTCollection.erc1155.mintAdditionalSupplyTo(
+        //     currentWalletAddress, // which wallet to send the newly minted NFT(s)
+        //     0, // id of the NFT (in this case, zero because there's currently only one NFT in the Marriage collection)
+        //     1 // quantity of this NFT to mint & add to current user's wallet
+        // );
+        // const costOfClaim = await marriageNFTCollection?.estimator.gasCostOf("claim", [
+        //     currentWalletAddress, // receiver
+        //     1, // quantity
+        //     "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE", // matic
+        //     0, // price per token
+        //     [], // proofs
+        //     1, // proof max quantity per transaction
+        // ]);
+        // console.log('costOfClaim', { costOfClaim })
+        // marriageNFTCollection.interceptor.overrideNextTransaction(() => ({
+        //     gasLimit: 3000000,
+        // }));
+        const tx = await marriageNFTCollection.claimTo(
+            currentWalletAddress,// which wallet to send the newly minted NFT(s)
             0, // id of the NFT (in this case, zero because there's currently only one NFT in the Marriage collection)
-            1 // quantity of this NFT to mint & add to current user's wallet
+            1, // quantity of this NFT to mint & add to current user's wallet
+            // true // Optional, check if the wallet has enough ERC20 allowance to claim the tokens, and if not, approve the transfer
         );
+        console.log('receipt', { tx })
     }, [currentWalletAddress, MARRIAGE_NFT_COLLECTION_ID, SUPER_PRIVATE_KEY])
-
-    // const conditions = [
-    //     {
-    //         startTime: new Date(),
-    //         price: 0,
-    //         trait_type: "married",
-    //         value: "true"
-    //     },
-    // ];
-    // await marriageNFTCollection.claimConditions.set(0, conditions)
 
     return (
         <AppContext.Provider value={{
