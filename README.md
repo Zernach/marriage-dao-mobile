@@ -11,7 +11,7 @@ This repository contains the iOS/Android React Native code for Marriage DAO. It 
 
 `yarn ios` or `yarn android`
 
-<img className="gif" src='https://github.com/Zernach/zernach.github.io/blob/master/images/marriage-dao-demo-gif-expo-react-native-walletconnect.gif?raw=true'/>
+<img className="gif" src='https://github.com/Zernach/zernach.github.io/blob/main/images/gifs/Marriage%20DAO%20%F0%9F%92%8D%20Consumate%20Your%20Marriage%20on%20the%20Blockchain%20%F0%9F%93%B1%20iOS_Android%20React%20Native%20Expo%20App.gif?raw=true'/>
 <br/>
 <br/>
 <br/>
